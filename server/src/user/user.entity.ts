@@ -49,7 +49,6 @@ export class User extends BaseEntity {
   @Column()
   @IsString()
   @IsNotEmpty()
-  @Exclude()
   password: string;
 
   @Column()

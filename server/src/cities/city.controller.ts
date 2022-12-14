@@ -10,7 +10,7 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
   },
 })
 // @UseGuards(JwtAuthGuard)
-@Controller('city')
+@Controller('cities')
 export class CityController implements CrudController<City> {
   constructor(public service: CityService) {}
 }
