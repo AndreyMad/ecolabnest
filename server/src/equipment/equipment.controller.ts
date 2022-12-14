@@ -11,6 +11,6 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 })
 // @UseGuards(JwtAuthGuard)
 @Controller('Equipment')
-export class RestourantController implements CrudController<Equipment> {
+export class EquipmentController implements CrudController<Equipment> {
   constructor(public service: EquipmentService) {}
 }

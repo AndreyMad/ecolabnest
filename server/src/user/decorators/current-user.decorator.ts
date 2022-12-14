@@ -6,12 +6,14 @@ export type CurrentUserResult = User;
 
 export const CurrentUser = createParamDecorator(
   async (ctx: ExecutionContext): Promise<CurrentUserResult> => {
-    const { user } = ctx.switchToHttp().getRequest();
+    console.log('ctx', ctx);
+    
+    // const { user } = ctx.switchToHttp().getRequest();
 
-    if (!user) {
-      return null;
-    }
-
-    return user as CurrentUserResult;
+    // if (!user) {
+    //   return null;
+    // }
+    return new Promise(()=>'sss')
+    // return user as CurrentUserResult;
   },
 );
