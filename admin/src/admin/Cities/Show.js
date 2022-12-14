@@ -7,9 +7,8 @@ export const Show = (props) => (
   <RaShow {...props}>
     <SimpleShowLayout>
       <TextField source="id" />
-      <TextField source="fullName" />
-      <TextField source="email" />
-      <TextField source="password" />
+      <TextField source="name" label="Назва" />
+      <TextField source="region" label="Назва" />
       <DeleteButton />
     </SimpleShowLayout>
   </RaShow>

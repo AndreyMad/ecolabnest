@@ -6,7 +6,7 @@ import {
 
 export const Filter = (props) => (
   <RaFilter {...props}>
-    <TextInput label="Email" source="email||$contL" alwaysOn />
-    <TextInput label="Прізвище" source="lastName||$contL" alwaysOn />
+    <TextInput label="Назва" source="email||$contL" alwaysOn />
+    <TextInput label="Область" source="region||$contL" alwaysOn />
   </RaFilter>
 );
