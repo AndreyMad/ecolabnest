@@ -8,6 +8,7 @@ import crudProvider from './providers/crudProvider';
 import authProvider from './providers/authProvider';
 import users from './admin/User';
 import cities from './admin/Cities';
+import restourants from './admin/Restourants';
 import { MenuLayout } from './components/MenuLayout';
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
     >
       <Resource name="users" {...users} />
       <Resource name="cities" {...cities} />
+      <Resource name="restourants" {...restourants} />
     </Admin>
   );
 };

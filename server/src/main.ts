@@ -11,6 +11,6 @@ async function bootstrap(): Promise<void> {
   app.enableCors();
   app.useGlobalPipes(new ValidationPipe({ forbidUnknownValues: true }));
   app.use(json({ limit: '20mb' }));
-  await app.listen(3003);
+  await app.listen(3004);
 }
 bootstrap();

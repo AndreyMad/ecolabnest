@@ -1,8 +1,11 @@
 import { IsNotEmpty, IsString } from 'class-validator';
+import { Restourant } from 'src/restourants/restourant.entity';
 import {
   BaseEntity,
   Column,
   Entity,
+  JoinColumn,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -16,6 +19,11 @@ export class City extends BaseEntity {
   @IsNotEmpty()
   name: string;
 
-  // restourants one-to-many
-  
+  @Column()
+  @IsString()
+  @IsNotEmpty()
+  region: string;
+
+  @OneToMany(() => Restourant, (restourant) => restourant.city)
+  restourants: Restourant[];  
 }
