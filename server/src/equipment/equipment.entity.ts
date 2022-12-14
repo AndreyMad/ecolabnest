@@ -8,11 +8,12 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { BaseDto } from '../global-definitions/dto/base.dto';
 
 
 
 @Entity()
-export class Equipment extends BaseEntity {
+export class Equipment extends BaseDto {
   @PrimaryGeneratedColumn()
   id: number;
 

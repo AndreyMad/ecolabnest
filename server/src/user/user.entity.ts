@@ -8,7 +8,7 @@ import {
   Entity,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Exclude } from 'class-transformer';
+import { BaseDto } from '../global-definitions/dto/base.dto';
 
 export const RAND_SALT = 12;
 
@@ -18,7 +18,7 @@ export enum USER_ROLE {
 }
 
 @Entity()
-export class User extends BaseEntity {
+export class User extends BaseDto {
   @PrimaryGeneratedColumn()
   id: number;
 

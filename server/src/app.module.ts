@@ -8,7 +8,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { join } from 'path';
 import { CityModule } from './cities/city.module';
-import { ItemModule } from './items/item.module';
+import { VisitModule } from './visits/visit.module';
 import { RestourantModule } from './restourants/restourant.module';
 
 @Module({
@@ -45,7 +45,7 @@ import { RestourantModule } from './restourants/restourant.module';
     AuthModule,
     UserModule,
     CityModule,
-    ItemModule,
+    VisitModule,
     RestourantModule,
   ],
   controllers: [AppController],

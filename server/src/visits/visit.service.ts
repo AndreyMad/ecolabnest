@@ -2,14 +2,14 @@ import { Repository } from 'typeorm';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TypeOrmCrudService } from '@nestjsx/crud-typeorm';
-import { Item } from './item.entity';
+import { Visit } from './visit.entity';
 
 @Injectable()
-export class ItemService extends TypeOrmCrudService<Item> {
+export class VisitService extends TypeOrmCrudService<Visit> {
   constructor(
-    @InjectRepository(Item)
-    private readonly itemRepository: Repository<Item>,
+    @InjectRepository(Visit)
+    private readonly visitRepository: Repository<Visit>,
   ) {
-    super(itemRepository);
+    super(visitRepository);
   }
 }

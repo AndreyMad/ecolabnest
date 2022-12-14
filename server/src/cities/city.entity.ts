@@ -8,9 +8,10 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { BaseDto } from '../global-definitions/dto/base.dto';
 
 @Entity()
-export class City extends BaseEntity {
+export class City extends BaseDto {
   @PrimaryGeneratedColumn()
   id: number;
 

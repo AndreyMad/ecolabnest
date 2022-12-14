@@ -1,4 +1,4 @@
-import { IsEnum, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { IsBoolean, IsEnum, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import { City } from 'src/cities/city.entity';
 import { Equipment } from 'src/equipment/equipment.entity';
 import {
@@ -10,6 +10,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { BaseDto } from '../global-definitions/dto/base.dto';
 
 
 export enum RestourantType {
@@ -22,7 +23,7 @@ export enum RestourantType {
 
 }
 @Entity()
-export class Restourant extends BaseEntity {
+export class Restourant extends BaseDto {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -57,5 +58,10 @@ export class Restourant extends BaseEntity {
   @OneToMany(() => Equipment, (equipment) => equipment.restourant, { nullable: true })
   @JoinColumn()
   equipments: Equipment[];
+
+  @Column()
+  @IsOptional()
+  @IsBoolean()
+  isVisited?: boolean;
 
 }
