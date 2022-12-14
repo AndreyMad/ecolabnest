@@ -2,10 +2,12 @@ import * as React from 'react';
 import { MenuItemLink } from 'react-admin';
 import {
   GroupSharp,
+  LocationCity,
 } from '@material-ui/icons';
 
 export const Menu = () => (
   <div>
-    <MenuItemLink to="/users" primaryText="Users" leftIcon={<GroupSharp />} />
+    <MenuItemLink to="/users" primaryText="Користувачі" leftIcon={<GroupSharp />} />
+    <MenuItemLink to="/cities" primaryText="Міста" leftIcon={<LocationCity />} />
   </div>
 );

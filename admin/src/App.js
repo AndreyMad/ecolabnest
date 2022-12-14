@@ -7,6 +7,7 @@ import { server } from './config/server';
 import crudProvider from './providers/crudProvider';
 import authProvider from './providers/authProvider';
 import users from './admin/User';
+import cities from './admin/Cities';
 import { MenuLayout } from './components/MenuLayout';
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
       dataProvider={crudProvider(server.apiUrl, httpClient)}
     >
       <Resource name="users" {...users} />
+      <Resource name="cities" {...cities} />
     </Admin>
   );
 };
