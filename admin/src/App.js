@@ -9,6 +9,7 @@ import authProvider from './providers/authProvider';
 import users from './admin/User';
 import cities from './admin/Cities';
 import restourants from './admin/Restourants';
+import equipments from './admin/Equipments';
 import { MenuLayout } from './components/MenuLayout';
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
       <Resource name="users" {...users} />
       <Resource name="cities" {...cities} />
       <Resource name="restourants" {...restourants} />
+      <Resource name="equipments" {...equipments} />
     </Admin>
   );
 };

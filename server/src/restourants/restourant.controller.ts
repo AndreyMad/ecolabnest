@@ -13,6 +13,9 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
       city: {
         eager: true,
       },
+      equipments:{
+        eager:true,
+      },
     },
   },
 })

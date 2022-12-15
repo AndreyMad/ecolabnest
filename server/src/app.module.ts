@@ -10,6 +10,7 @@ import { join } from 'path';
 import { CityModule } from './cities/city.module';
 import { VisitModule } from './visits/visit.module';
 import { RestourantModule } from './restourants/restourant.module';
+import { EquipmentModule } from './equipment/equipment.module';
 
 @Module({
   imports: [
@@ -47,6 +48,7 @@ import { RestourantModule } from './restourants/restourant.module';
     CityModule,
     VisitModule,
     RestourantModule,
+    EquipmentModule,
   ],
   controllers: [AppController],
   providers: [AppService],

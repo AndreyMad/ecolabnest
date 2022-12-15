@@ -1,4 +1,4 @@
-import { IsEnum, IsNotEmpty, IsString } from 'class-validator';
+import { IsEnum, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import { Restourant } from 'src/restourants/restourant.entity';
 import {
   BaseEntity,
@@ -22,11 +22,12 @@ export class Equipment extends BaseDto {
   name: string;
 
   @Column({nullable:true})
+  @IsOptional()
   @IsString()
   article?: string;
 
   @ManyToOne(() => Restourant, (restourant) => restourant.equipments, { nullable: true })
-  @JoinColumn()
-  restourant: Restourant;
+  @IsOptional()
+  restourant?: Restourant;
 
 }

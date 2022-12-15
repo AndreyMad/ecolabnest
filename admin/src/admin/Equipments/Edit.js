@@ -3,11 +3,9 @@ import {
   Edit as RaEdit,
   TextInput,
   SimpleForm,
-  SelectInput,
   AutocompleteInput,
   ReferenceInput,
 } from 'react-admin';
-import { RESTOURANT_TYPES } from '../../constants/enums';
 import { filterToQueryBuilder } from '../../utils/helpers';
 
 export const Edit = (props) => {
@@ -17,15 +15,13 @@ export const Edit = (props) => {
     <RaEdit {...props}>
       <SimpleForm redirect={redirect}>
         <TextInput source="name" label="Назва" />
-        <TextInput source="address" label="Адреса" />
-        <SelectInput source="type" label="Тип ресторана" choices={RESTOURANT_TYPES} />
+        <TextInput source="article" label="Артикул" />
         <ReferenceInput
           alwaysOn
-          label="Місто"
-          source="city.id"
-          reference="cities"
-          filterToQuery={filterToQueryBuilder('id', 'name')}
-          allowEmpty={false}
+          label="Ресторан"
+          source="restourant.id"
+          reference="restourants"
+          filterToQuery={filterToQueryBuilder('name')}
         >
           <AutocompleteInput
             fullWidth
@@ -33,8 +29,6 @@ export const Edit = (props) => {
             optionText={(entity) => (entity && entity.id ? `${entity.name}` : '')}
           />
         </ReferenceInput>
-        <TextInput source="latitude" label="Координати широта" />
-        <TextInput source="longtitude" label="Координати довгота" />
       </SimpleForm>
     </RaEdit>
   );

@@ -14,13 +14,13 @@ import {
 import { Filter } from './Filter';
 import { CUSTOM_STORAGE } from '../../../constants/list-column-custom-storage';
 import { ShowIdButton } from '../../../components/ShowIdButton';
+import { ShowEquipmentButton } from '../../../components/ShowEquipmentButton';
 
 const DEFAULT_COLUMNS = ['id', 'name', 'address', 'type', 'city.name'];
 
 export const List = (props) => (
   <RaList filters={<Filter />} bulkActionButtons={false} {...props}>
     <CustomizableDatagrid
-      rowClick="show"
       storage={CUSTOM_STORAGE}
       defaultColumns={DEFAULT_COLUMNS}
     >
@@ -29,7 +29,7 @@ export const List = (props) => (
       <TextField source="address" label="Адреса" />
       <TextField source="type" label="Тип ресторана" />
       <TextField source="city.name" label="Місто" />
-      <TextField source="equipments" label="Обладнання" />
+      <ShowEquipmentButton source="equipments" label="Обладнання" />
       <TextField source="latitude" label="Координати широта" />
       <TextField source="longtitude" label="Координати довгота" />
       <FunctionField

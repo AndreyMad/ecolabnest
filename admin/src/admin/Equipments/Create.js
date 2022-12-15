@@ -4,11 +4,9 @@ import {
   required,
   TextInput,
   SimpleForm,
-  SelectInput,
   AutocompleteInput,
   ReferenceInput,
 } from 'react-admin';
-import { RESTOURANT_TYPES } from '../../constants/enums';
 import { filterToQueryBuilder } from '../../utils/helpers';
 
 export const Create = (props) => {
@@ -18,15 +16,13 @@ export const Create = (props) => {
     <RaCreate {...props}>
       <SimpleForm redirect={redirect}>
         <TextInput source="name" label="Назва" validate={required()} />
-        <TextInput source="address" label="Адреса" validate={required()} />
-        <SelectInput source="type" label="Тип ресторана" choices={RESTOURANT_TYPES} validate={required()} />
+        <TextInput source="article" label="Артикул" />
         <ReferenceInput
           alwaysOn
-          label="Місто"
-          defaultValue=""
-          source="city.id"
-          reference="cities"
-          validate={required()}
+          label="Ресторан"
+          defaultValue={null}
+          source="restourant.id"
+          reference="restourants"
           filterToQuery={filterToQueryBuilder('name')}
         >
           <AutocompleteInput
@@ -35,8 +31,6 @@ export const Create = (props) => {
             optionText={(entity) => (entity && entity.id ? `${entity.name}` : '')}
           />
         </ReferenceInput>
-        <TextInput source="latitude" label="Координати широта" />
-        <TextInput source="longtitude" label="Координати довгота" />
       </SimpleForm>
     </RaCreate>
   );

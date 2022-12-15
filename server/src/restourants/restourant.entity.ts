@@ -54,7 +54,6 @@ export class Restourant extends BaseDto {
   @ManyToOne(() => City, (city) => city.restourants,{ nullable: true })
   city: City;
 
-  //items one-to-many
   @OneToMany(() => Equipment, (equipment) => equipment.restourant, { nullable: true })
   @JoinColumn()
   equipments: Equipment[];
