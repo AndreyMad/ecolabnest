@@ -1,6 +1,5 @@
 import { IsEnum, IsNotEmpty, IsString } from 'class-validator';
 import { Equipment } from 'src/equipment/equipment.entity';
-import { EquipmentService } from 'src/equipment/equipment.service';
 import { Restourant } from 'src/restourants/restourant.entity';
 import {
   Column,
