@@ -6,11 +6,18 @@ export const ShowEquipmentButton = ({ source, record }) => {
   if (record.equipments.length < 1) {
     return <span>Немає обладнання</span>;
   }
-  const getLinkUrl = () => ({
-    pathname: '/equipments',
-    search: `filter=${JSON.stringify({ 'restourant.id||$eq': record.id })}`,
-  }
-  );
+  const getLinkUrl = () => {
+    const filter = {
+      restourant: {
+        'id||$eq': record.id,
+      },
+    };
+
+    return {
+      pathname: '/equipments',
+      search: `filter=${JSON.stringify(filter)}`,
+    };
+  };
 
   return (
     <Button

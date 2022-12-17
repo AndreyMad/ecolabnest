@@ -1,6 +1,7 @@
 import { IsBoolean, IsEnum, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import { City } from 'src/cities/city.entity';
 import { Equipment } from 'src/equipment/equipment.entity';
+import { Visit } from 'src/visits/visit.entity';
 import {
   BaseEntity,
   Column,
@@ -58,9 +59,8 @@ export class Restourant extends BaseDto {
   @JoinColumn()
   equipments: Equipment[];
 
-  @Column()
-  @IsOptional()
-  @IsBoolean()
-  isVisited?: boolean;
+  @OneToMany(() => Visit, (visit) => visit.restourant, { nullable: true })
+  @JoinColumn()
+  visits: Visit[];
 
 }

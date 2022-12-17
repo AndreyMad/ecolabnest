@@ -1,7 +1,14 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsEnum, IsNotEmpty, IsString } from 'class-validator';
+import { Equipment } from 'src/equipment/equipment.entity';
+import { EquipmentService } from 'src/equipment/equipment.service';
+import { Restourant } from 'src/restourants/restourant.entity';
 import {
   Column,
   Entity,
+  JoinColumn,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { BaseDto } from '../global-definitions/dto/base.dto';
@@ -22,6 +29,24 @@ export class Visit extends BaseDto {
   @IsNotEmpty()
   name: string;
 
-  //restourant many-to-one
+  @Column()
+  @IsEnum(VISIT_TYPES)
+  @IsNotEmpty()
+  visitType: string;
 
+  @ManyToOne(() => Restourant, (restourant) => restourant.visits)
+  restourant: Restourant;
+
+  @ManyToMany(()=> Equipment, (equipment)=>equipment.visits)
+  @JoinTable()
+  equipmentsList?: Equipment[];
+
+  @Column({ nullable:true })
+  @IsString()
+  engineerComment?: string;
+
+  @Column({ nullable:true })
+  @IsString()
+  managerComment?: string;
+  
 }

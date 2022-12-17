@@ -1,10 +1,12 @@
 import { IsEnum, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import { Restourant } from 'src/restourants/restourant.entity';
+import { Visit } from 'src/visits/visit.entity';
 import {
   BaseEntity,
   Column,
   Entity,
   JoinColumn,
+  ManyToMany,
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -29,5 +31,8 @@ export class Equipment extends BaseDto {
   @ManyToOne(() => Restourant, (restourant) => restourant.equipments, { nullable: true })
   @IsOptional()
   restourant?: Restourant;
+
+  @ManyToMany(()=> Visit, (visit)=>visit.equipmentsList)
+  visits?: Visit[];
 
 }
