@@ -10,6 +10,7 @@ import users from './admin/User';
 import cities from './admin/Cities';
 import restourants from './admin/Restourants';
 import equipments from './admin/Equipments';
+import visits from './admin/Visits';
 import { MenuLayout } from './components/MenuLayout';
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
       <Resource name="cities" {...cities} />
       <Resource name="restourants" {...restourants} />
       <Resource name="equipments" {...equipments} />
+      <Resource name="visits" {...visits} />
     </Admin>
   );
 };

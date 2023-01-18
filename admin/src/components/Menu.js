@@ -5,6 +5,7 @@ import {
   LocationCity,
   LocalCafe,
   Extension,
+  TableChart,
 } from '@material-ui/icons';
 
 export const Menu = () => (
@@ -13,5 +14,6 @@ export const Menu = () => (
     <MenuItemLink to="/cities" primaryText="Міста" leftIcon={<LocationCity />} />
     <MenuItemLink to="/restourants" primaryText="Ресторани" leftIcon={<LocalCafe />} />
     <MenuItemLink to="/equipments" primaryText="Обладнання" leftIcon={<Extension />} />
+    <MenuItemLink to="/visits" primaryText="Візити" leftIcon={<TableChart />} />
   </div>
 );

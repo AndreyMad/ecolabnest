@@ -13,7 +13,7 @@ import {
 import { BaseDto } from '../global-definitions/dto/base.dto';
 
 export enum VISIT_TYPES {
-  SERVICE= "SERVICE",
+  SERVICE = "SERVICE",
   NEW_RESTOURANT = "NEW_RESTOURANT",
   REQUEST_VISIT = "REQUEST_VISIT"
 }
@@ -36,16 +36,16 @@ export class Visit extends BaseDto {
   @ManyToOne(() => Restourant, (restourant) => restourant.visits)
   restourant: Restourant;
 
-  @ManyToMany(()=> Equipment, (equipment)=>equipment.visits)
+  @ManyToMany(() => Equipment, (equipment) => equipment.visits)
   @JoinTable()
   equipmentsList?: Equipment[];
 
-  @Column({ nullable:true })
+  @Column({ nullable: true })
   @IsString()
   engineerComment?: string;
 
-  @Column({ nullable:true })
+  @Column({ nullable: true })
   @IsString()
   managerComment?: string;
-  
+
 }

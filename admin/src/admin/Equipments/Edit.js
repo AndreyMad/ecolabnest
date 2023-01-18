@@ -25,6 +25,7 @@ export const Edit = (props) => {
         >
           <AutocompleteInput
             fullWidth
+            resettable
             allowEmpty={false}
             optionText={(entity) => (entity && entity.id ? `${entity.name}` : '')}
           />

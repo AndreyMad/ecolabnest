@@ -16,6 +16,9 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
       equipments:{
         eager:true,
       },
+      visits:{
+        eager:true,
+      },
     },
   },
 })
