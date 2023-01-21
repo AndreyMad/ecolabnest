@@ -20,7 +20,12 @@ export const Create = (props) => {
     <RaCreate {...props}>
       <SimpleForm redirect={redirect}>
         <TextInput source="name" label="Назва" validate={required()} />
-        <SelectInput source="visitType" label="Тип візиту" choices={VISIT_TYPES} validate={required()} />
+        <SelectInput
+          source="visitType"
+          label="Тип візиту"
+          choices={VISIT_TYPES}
+          validate={required()}
+        />
         <ReferenceInput
           alwaysOn
           label="Ресторан"
@@ -32,7 +37,9 @@ export const Create = (props) => {
           <AutocompleteInput
             fullWidth
             allowEmpty={false}
-            optionText={(entity) => (entity && entity.id ? `${entity.name}` : '')}
+            optionText={(entity) => (
+              entity && entity.id ? `${entity.name}` : ''
+            )}
           />
         </ReferenceInput>
         <TextInput
@@ -49,19 +56,19 @@ export const Create = (props) => {
           validate={required()}
         />
         <ArrayInput source="equipmentsList" label="Список обладнання">
-          <SimpleFormIterator resource="equipmentsList">
+          <SimpleFormIterator>
             <ReferenceInput
               alwaysOn
               label="Обладнання"
-              defaultValue={null}
-              // source="equipment.id"
+              source="id"
               reference="equipments"
-              filterToQuery={filterToQueryBuilder('name')}
+              allowEmpty={false}
+              validate={required()}
+              filterToQuery={filterToQueryBuilder('id', 'name')}
             >
               <AutocompleteInput
                 fullWidth
-                allowEmpty={false}
-                optionText={(entity) => (entity && entity.id ? `(${entity.id}) ${entity.name}` : '')}
+                optionText={(entity) => `(${entity.id}) ${entity.name}`}
               />
             </ReferenceInput>
           </SimpleFormIterator>

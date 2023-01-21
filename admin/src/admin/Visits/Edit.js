@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Edit as RaEdit,
   TextInput,
@@ -13,32 +13,41 @@ import {
   TextField,
   useUpdate,
   FormDataConsumer,
+  Login,
 } from 'react-admin';
+import { useHistory } from 'react-router-dom';
 import { VISIT_TYPES } from '../../constants/enums';
 import { filterToQueryBuilder } from '../../utils/helpers';
 
 export const Edit = (props) => {
   const redirect = (basePath) => `${basePath}`;
   const [update] = useUpdate();
-  const updateHandler = (data) => {
+  const history = useHistory();
+
+  const updateHandler = async (data) => {
     const editedData = {};
-    Object.keys(data).map(el => {
-      if (el !== 'equipmentsList') {
-        return editedData[el] = data[el];
+    Object.keys(data).map((el) => {
+      if (el === 'equipmentsList') {
+        editedData.equipmentsList = data[el].map((el) =>
+          el.equipmentsList ? el.equipmentsList : el
+        );
       }
-      return editedData[el] = data[el].map(el => el.equipment);
+      editedData[el] = data[el];
+      return;
     });
-    console.log(data);
-
     update('visits', editedData.id, editedData);
-    console.log(update);
-
   };
+
   return (
     <RaEdit {...props}>
-      <SimpleForm save={updateHandler} redirect={redirect}>
+      <SimpleForm saving={updateHandler} redirect={redirect}>
         <TextInput source="name" label="Назва" validate={required()} />
-        <SelectInput source="visitType" label="Тип візиту" choices={VISIT_TYPES} validate={required()} />
+        <SelectInput
+          source="visitType"
+          label="Тип візиту"
+          choices={VISIT_TYPES}
+          validate={required()}
+        />
         <ReferenceInput
           alwaysOn
           label="Ресторан"
@@ -49,7 +58,9 @@ export const Edit = (props) => {
           <AutocompleteInput
             fullWidth
             allowEmpty={false}
-            optionText={(entity) => (entity && entity.id ? `${entity.name}` : '')}
+            optionText={(entity) =>
+              entity && entity.id ? `${entity.name}` : ''
+            }
           />
         </ReferenceInput>
         <TextInput
@@ -64,38 +75,22 @@ export const Edit = (props) => {
           label="Коментар менеджера"
           validate={required()}
         />
-        <ArrayInput source="equipmentsList" resource="equipments" label="Список обладнання">
+        <ArrayInput source="equipmentsList" label="Список обладнання">
           <SimpleFormIterator>
-            <FormDataConsumer>
-              {({ scopedFormData }) => {
-                console.log(scopedFormData);
-
-                return (
-                  <ReferenceInput label="Обладнання" source="equipment.id" reference="equipments">
-                    <AutocompleteInput
-                      fullWidth
-                      allowEmpty={false}
-                      optionText={(entity) => (entity && entity.id ? `(${entity.id}) ${entity?.name}` : '')}
-                    />
-                  </ReferenceInput>
-                  // <ReferenceInput
-                  //   alwaysOn
-                  //   label="Обладнання"
-                  //   source="equipment.id"
-                  //   reference="equipments"
-                  //   filterToQuery={filterToQueryBuilder('name')}
-                  // >
-                  //   <AutocompleteInput
-                  //     fullWidth
-                  //     allowEmpty={false}
-                  //     inputValue={scopedFormData.name}
-                  //     optionText={(entity) => (entity && entity.id ? `(${entity.id}) ${entity.name}` : '')}
-                  //   />
-                  // </ReferenceInput>
-                )
-              }}
-            </FormDataConsumer>
-
+            <ReferenceInput
+              alwaysOn
+              label="Обладнання"
+              source="id"
+              reference="equipments"
+              allowEmpty={false}
+              validate={required()}
+              filterToQuery={filterToQueryBuilder('id', 'name')}
+            >
+              <AutocompleteInput
+                fullWidth
+                optionText={(entity) => `(${entity.id}) ${entity.name}`}
+              />
+            </ReferenceInput>
           </SimpleFormIterator>
         </ArrayInput>
       </SimpleForm>
