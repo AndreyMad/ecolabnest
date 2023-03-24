@@ -6,9 +6,11 @@ import {
   BeforeUpdate,
   Column,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { BaseDto } from '../global-definitions/dto/base.dto';
+import { Visit } from 'src/visits/visit.entity';
 
 export const RAND_SALT = 12;
 
@@ -66,4 +68,7 @@ export class User extends BaseDto {
   public async compareHash(passwordToCompare: string): Promise<boolean> {
     return bcrypt.compare(passwordToCompare, this.password);
   }
+
+  @ManyToOne(()=>Visit,(visit)=>visit.user)
+  visits?: Visit[];
 }
