@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React from 'react';
 import {
   List as RaList,
@@ -34,9 +35,10 @@ export const List = (props) => (
       <TextField source="longtitude" label="Координати довгота" />
       <FunctionField
         label="Перший візит"
-        render={({ isVisited }) => (
-          isVisited ? <DoneAll htmlColor="lightGreen" /> : <PriorityHigh htmlColor="red" />
-        )}
+        render={({ visits }) =>(
+          visits.length ? <DoneAll htmlColor="lightGreen" /> : <PriorityHigh htmlColor="red" />
+        )
+      }
       />
       <EditButton />
     </CustomizableDatagrid>

@@ -16,7 +16,8 @@ export const RAND_SALT = 12;
 
 export enum USER_ROLE {
   ADMIN = 'ADMIN',
-  USER = 'USER',
+  INGENER = 'INGENER',
+  RESTAURANT = 'RESTAURANT',
 }
 
 @Entity()

@@ -1,4 +1,10 @@
-import { IsBoolean, IsEnum, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import {
+  IsBoolean,
+  IsEnum,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 import { City } from 'src/cities/city.entity';
 import { Equipment } from 'src/equipment/equipment.entity';
 import { Visit } from 'src/visits/visit.entity';
@@ -13,15 +19,13 @@ import {
 } from 'typeorm';
 import { BaseDto } from '../global-definitions/dto/base.dto';
 
-
 export enum RestourantType {
-  MACDONALDS = 'MACDONALDS',
+  MCDONALDS = 'MCDONALDS',
   KFC = 'KFC',
-  HASBURGER = 'HASBURGER',
-  PUZATA_HATA = 'PUZATA_HATA',
-  SUSHI_MASTER = 'SUSHI_MASTER',
+  HESBURGER = 'HESBURGER',
+  SLOUFUDS = 'SLOUFUDS',
+  CINNABONE = 'CINNABONE',
   OTHER = 'OTHER',
-
 }
 @Entity()
 export class Restourant extends BaseDto {
@@ -37,12 +41,12 @@ export class Restourant extends BaseDto {
   @IsNotEmpty()
   address: string;
 
-  @Column({ nullable: true, default:'' })
+  @Column({ nullable: true, default: '' })
   @IsOptional()
   @IsString()
   latitude?: string;
 
-  @Column({ nullable: true, default:'' })
+  @Column({ nullable: true, default: '' })
   @IsOptional()
   @IsString()
   longtitude?: string;
@@ -52,15 +56,16 @@ export class Restourant extends BaseDto {
   @IsNotEmpty()
   type: string;
 
-  @ManyToOne(() => City, (city) => city.restourants,{ nullable: true })
+  @ManyToOne(() => City, (city) => city.restourants, { nullable: true })
   city: City;
 
-  @OneToMany(() => Equipment, (equipment) => equipment.restourant, { nullable: true })
+  @OneToMany(() => Equipment, (equipment) => equipment.restourant, {
+    nullable: true,
+  })
   @JoinColumn()
   equipments: Equipment[];
 
   @OneToMany(() => Visit, (visit) => visit.restourant, { nullable: true })
   @JoinColumn()
   visits: Visit[];
-
 }

@@ -12,8 +12,6 @@ import {
 } from 'typeorm';
 import { BaseDto } from '../global-definitions/dto/base.dto';
 
-
-
 @Entity()
 export class Equipment extends BaseDto {
   @PrimaryGeneratedColumn()
@@ -23,16 +21,17 @@ export class Equipment extends BaseDto {
   @IsString()
   name: string;
 
-  @Column({nullable:true})
+  @Column({ nullable: true })
   @IsOptional()
   @IsString()
   article?: string;
 
-  @ManyToOne(() => Restourant, (restourant) => restourant.equipments, { nullable: true })
+  @ManyToOne(() => Restourant, (restourant) => restourant.equipments, {
+    nullable: true,
+  })
   @IsOptional()
   restourant?: Restourant;
 
-  @ManyToMany(()=> Visit, (visit)=>visit.equipmentsList)
+  @ManyToMany(() => Visit, (visit) => visit.equipmentsList)
   visits?: Visit[];
-
 }

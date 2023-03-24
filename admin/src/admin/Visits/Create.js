@@ -11,7 +11,7 @@ import {
   ArrayInput,
 } from 'react-admin';
 import { filterToQueryBuilder } from '../../utils/helpers';
-import { VISIT_TYPES } from '../../constants/enums';
+import { VISIT_TYPES, USER_TYPE } from '../../constants/enums';
 
 export const Create = (props) => {
   const redirect = (basePath) => `${basePath}`;
@@ -42,12 +42,23 @@ export const Create = (props) => {
             )}
           />
         </ReferenceInput>
-        <TextInput
-          multiline
-          source="engineerComment"
-          label="Коментар інженера"
-          validate={required()}
-        />
+        <ReferenceInput
+          alwaysOn
+          label="Інженер"
+          defaultValue={null}
+          source="user.id"
+          reference="users"
+          filter={{ role: USER_TYPE.INGENER }}
+          filterToQuery={filterToQueryBuilder('id', 'firstName', 'lastName')}
+        >
+          <AutocompleteInput
+            fullWidth
+            allowEmpty={false}
+            optionText={(entity) => (
+              entity && entity.id ? `${entity.firstName} ${entity.lastName}` : ''
+            )}
+          />
+        </ReferenceInput>
         <TextInput
           multiline
           sx={{ minHeight: '200px' }}
