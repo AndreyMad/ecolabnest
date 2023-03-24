@@ -2,10 +2,10 @@ import React from 'react';
 import {
   List as RaList,
   TextField,
-  EditButton,
+  EditButton, FunctionField,
 } from 'react-admin';
 import CustomizableDatagrid from 'ra-customizable-datagrid';
-
+import dayjs from 'dayjs';
 import { Filter } from './Filter';
 import { CUSTOM_STORAGE } from '../../../constants/list-column-custom-storage';
 import { ShowIdButton } from '../../../components/ShowIdButton';
@@ -23,7 +23,11 @@ export const List = (props) => {
       >
         <ShowIdButton source="id" />
         <TextField source="name" label="Назва" />
-        <TextField source="createdAt" label="Створено" />
+        <FunctionField
+          source="createdAt"
+          label="Створено"
+          render={(record) => <span>{dayjs(record.createdAt).format('DD-MM-YYYY HH:MM')}</span>}
+        />
         <TextField source="visitType" label="Тип візиту" />
         <TextField source="restourant.name" label="Ресторан" />
         <EditButton />

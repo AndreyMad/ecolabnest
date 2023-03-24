@@ -66,7 +66,7 @@ export const Edit = (props) => {
         <TextInput
           multiline
           source="engineerComment"
-          label="Коментар інжинера"
+          label="Коментар інженера"
           validate={required()}
         />
         <TextInput
