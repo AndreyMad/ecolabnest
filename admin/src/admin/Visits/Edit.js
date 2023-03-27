@@ -16,7 +16,7 @@ import {
   Login,
 } from 'react-admin';
 import { useHistory } from 'react-router-dom';
-import { VISIT_TYPES } from '../../constants/enums';
+import { VISIT_TYPES, USER_TYPE } from '../../constants/enums';
 import { filterToQueryBuilder } from '../../utils/helpers';
 
 export const Edit = (props) => {
@@ -52,7 +52,7 @@ export const Edit = (props) => {
           alwaysOn
           label="Ресторан"
           source="restourant.id"
-          reference="restourants"
+          reference="restaurants"
           validate={required()}
         >
           <AutocompleteInput
@@ -61,6 +61,22 @@ export const Edit = (props) => {
             optionText={(entity) =>
               entity && entity.id ? `${entity.name}` : ''
             }
+          />
+        </ReferenceInput>
+        <ReferenceInput
+          alwaysOn
+          label="Інженер"
+          // defaultValue={null}
+          source="user.id"
+          reference="users"
+          // filter={{ role: USER_TYPE.INGENEER }}
+          filterToQuery={filterToQueryBuilder('id', 'firstName', 'lastName')}
+        >
+          <AutocompleteInput
+            fullWidth
+            optionText={(entity) => (
+              entity && entity.id ? `${entity.firstName} ${entity.lastName}` : ''
+            )}
           />
         </ReferenceInput>
         <TextInput

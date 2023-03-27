@@ -10,7 +10,7 @@ import { Filter } from './Filter';
 import { CUSTOM_STORAGE } from '../../../constants/list-column-custom-storage';
 import { ShowIdButton } from '../../../components/ShowIdButton';
 
-const DEFAULT_COLUMNS = ['id', 'name', 'visitType', 'createdAt', 'restourant.name'];
+const DEFAULT_COLUMNS = ['id', 'name', 'visitType', 'createdAt', 'restaurant.name'];
 
 export const List = (props) => {
   console.log(props);
@@ -28,8 +28,15 @@ export const List = (props) => {
           label="Створено"
           render={(record) => <span>{dayjs(record.createdAt).format('DD-MM-YYYY HH:MM')}</span>}
         />
+        <FunctionField
+          source="user"
+          label="Інженер"
+          render={(record) => {
+            console.log(record);
+          }}
+        />
         <TextField source="visitType" label="Тип візиту" />
-        <TextField source="restourant.name" label="Ресторан" />
+        <TextField source="restaurant.name" label="Ресторан" />
         <EditButton />
       </CustomizableDatagrid>
     </RaList>

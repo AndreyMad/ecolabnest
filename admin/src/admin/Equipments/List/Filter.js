@@ -13,8 +13,8 @@ export const Filter = (props) => (
     <TextInput label="Артикул" source="address||$contL" />
     <ReferenceInput
       allowEmpty={false}
-      source="restourant.id||$eq"
-      reference="restourants"
+      source="restaurant.id||$eq"
+      reference="restaurants"
       filterToQuery={filterToQueryBuilder('id', 'name')}
       label="Ресторан"
       alwaysOn

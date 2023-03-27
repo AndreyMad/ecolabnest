@@ -1,5 +1,5 @@
 import { IsEnum, IsNotEmpty, IsOptional, IsString } from 'class-validator';
-import { Restourant } from 'src/restourants/restourant.entity';
+import { Restourant } from 'src/restaurants/restaurant.entity';
 import { Visit } from 'src/visits/visit.entity';
 import {
   BaseEntity,

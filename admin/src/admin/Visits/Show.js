@@ -27,12 +27,12 @@ export const Show = (props) => (
         <Box flex={1} mr="0.5em">
           <SimpleShowLayout>
             <Typography>Ресторан</Typography>
-            <TextField source="restourant.id" label="Id" />
-            <TextField source="restourant.name" label="Назва" />
-            <TextField source="restourant.address" label="Адреса" />
-            <TextField source="restourant.type" label="Тип" />
-            <TextField source="restourant.latitude" label="Широта" />
-            <TextField source="restourant.longtitude" label="Довгота" />
+            <TextField source="restaurant.id" label="Id" />
+            <TextField source="restaurant.name" label="Назва" />
+            <TextField source="restaurant.address" label="Адреса" />
+            <TextField source="restaurant.type" label="Тип" />
+            <TextField source="restaurant.latitude" label="Широта" />
+            <TextField source="restaurant.longtitude" label="Довгота" />
           </SimpleShowLayout>
         </Box>
         <Box flex={1} mr="0.5em">

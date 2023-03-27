@@ -8,7 +8,7 @@ export const ShowEquipmentButton = ({ source, record }) => {
   }
   const getLinkUrl = () => {
     const filter = {
-      restourant: {
+      restaurant: {
         'id||$eq': record.id,
       },
     };

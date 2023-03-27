@@ -24,7 +24,7 @@ export const List = (props) => {
         <ShowIdButton source="id" />
         <TextField source="name" label="Назва" />
         <TextField source="article" label="Артикул" />
-        <TextField source="restourant.name" label="Ресторан" />
+        <TextField source="restaurant.name" label="Ресторан" />
         <EditButton />
       </CustomizableDatagrid>
     </RaList>

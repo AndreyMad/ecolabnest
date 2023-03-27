@@ -1,6 +1,6 @@
 import { IsEnum, IsNotEmpty, IsString } from 'class-validator';
 import { Equipment } from 'src/equipment/equipment.entity';
-import { Restourant } from 'src/restourants/restourant.entity';
+import { Restourant } from 'src/restaurants/restaurant.entity';
 import { User } from 'src/user/user.entity';
 import {
   Column,
@@ -11,13 +11,13 @@ import {
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
+  OneToOne,
 } from 'typeorm';
 import { BaseDto } from '../global-definitions/dto/base.dto';
-import { EquipmentListDto } from './dto/equipmentList.dto';
 
 export enum VISIT_TYPES {
-  SERVICE = 'SERVICE',
-  NEW_RESTOURANT = 'NEW_RESTOURANT',
+  SERVICE_VISIT = 'SERVICE_VISIT',
+  NEW_RESTAURANT = 'NEW_RESTAURANT',
   REQUEST_VISIT = 'REQUEST_VISIT',
 }
 
@@ -40,18 +40,16 @@ export class Visit extends BaseDto {
   @IsNotEmpty()
   visitType: string;
 
-  @ManyToOne(() => Restourant, (restourant) => restourant.visits)
+  @ManyToOne(() => Restourant, (restourant) => restourant.visits, {onDelete: 'CASCADE',})
   restourant: Restourant;
 
   @ManyToMany(() => Equipment, (equipment) => equipment.visits)
   @JoinTable()
   equipmentsList?: Equipment[];
 
-  @Column({ nullable: true })
-  @IsString()
+  @Column({ nullable: true, default: '' })
   engineerComment?: string;
 
   @Column({ nullable: true })
-  @IsString()
   managerComment?: string;
 }

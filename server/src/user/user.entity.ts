@@ -1,12 +1,14 @@
 import * as bcrypt from 'bcrypt';
-import { IsEmail, IsEnum, IsNotEmpty, IsString } from 'class-validator';
+import { IsEmail, IsEnum, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import {
   BaseEntity,
   BeforeInsert,
   BeforeUpdate,
   Column,
   Entity,
+  JoinTable,
   ManyToOne,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { BaseDto } from '../global-definitions/dto/base.dto';
@@ -16,7 +18,7 @@ export const RAND_SALT = 12;
 
 export enum USER_ROLE {
   ADMIN = 'ADMIN',
-  INGENER = 'INGENER',
+  INGENEER = 'INGENEER',
   RESTAURANT = 'RESTAURANT',
 }
 

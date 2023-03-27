@@ -19,8 +19,8 @@ export const Edit = (props) => {
         <ReferenceInput
           alwaysOn
           label="Ресторан"
-          source="restourant.id"
-          reference="restourants"
+          source="restaurant.id"
+          reference="restaurants"
           filterToQuery={filterToQueryBuilder('name')}
         >
           <AutocompleteInput

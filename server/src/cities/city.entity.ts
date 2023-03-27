@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsString } from 'class-validator';
-import { Restourant } from 'src/restourants/restourant.entity';
+import { Restourant } from 'src/restaurants/restaurant.entity';
 import {
   BaseEntity,
   Column,

@@ -21,8 +21,8 @@ export const Create = (props) => {
           alwaysOn
           label="Ресторан"
           defaultValue={null}
-          source="restourant.id"
-          reference="restourants"
+          source="restaurant.id"
+          reference="restaurants"
           filterToQuery={filterToQueryBuilder('name')}
         >
           <AutocompleteInput

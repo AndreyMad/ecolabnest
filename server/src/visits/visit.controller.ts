@@ -14,6 +14,9 @@ import { UpdateUserDto } from 'src/user/dto/update-user.dto';
       restourant: {
         eager: true,
       },
+      user: {
+        eager: true,
+      },
       equipmentsList: {
         eager: true,
       },
@@ -25,13 +28,13 @@ import { UpdateUserDto } from 'src/user/dto/update-user.dto';
 export class VisitController implements CrudController<Visit> {
   constructor(public service: VisitService) {}
   
-  @Override('updateOneBase')
-  async updateOne(
-    @ParsedRequest() req: CrudRequest,
-    @ParsedBody() body: Visit,
-  ) {
-    console.log(body);
+  // @Override('createOneBase')
+  // async createOneBase(
+  //   @ParsedRequest() req: CrudRequest,
+  //   @ParsedBody() body: Visit,
+  // ) {
+  //   console.log(body);
     
-    return this.service.updateOne(req, body);
-  }
+  //   return this.service.createOne(req, body);
+  // }
 }

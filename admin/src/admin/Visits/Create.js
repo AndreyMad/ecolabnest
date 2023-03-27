@@ -30,8 +30,8 @@ export const Create = (props) => {
           alwaysOn
           label="Ресторан"
           defaultValue={null}
-          source="restourant.id"
-          reference="restourants"
+          source="restaurants.id"
+          reference="restaurants"
           filterToQuery={filterToQueryBuilder('name')}
         >
           <AutocompleteInput
@@ -48,7 +48,7 @@ export const Create = (props) => {
           defaultValue={null}
           source="user.id"
           reference="users"
-          filter={{ role: USER_TYPE.INGENER }}
+          filter={{ role: USER_TYPE.INGENEER }}
           filterToQuery={filterToQueryBuilder('id', 'firstName', 'lastName')}
         >
           <AutocompleteInput
