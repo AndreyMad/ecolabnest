@@ -24,5 +24,18 @@ export const Filter = (props) => (
         optionText={(a) => `(${a.id}) ${a.name}`}
       />
     </ReferenceInput>
+    <ReferenceInput
+      allowEmpty={false}
+      source="user.id||$eq"
+      reference="users"
+      filterToQuery={filterToQueryBuilder('id', 'firstName', 'lastName')}
+      label="Інженер"
+      alwaysOn
+    >
+      <AutocompleteInput
+        resettable
+        optionText={(a) => `(${a.id}) ${a.firstName} ${a.lastName}`}
+      />
+    </ReferenceInput>
   </RaFilter>
 );

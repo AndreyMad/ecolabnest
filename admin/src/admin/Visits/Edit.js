@@ -1,5 +1,4 @@
-/*eslint-disable*/
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
   Edit as RaEdit,
   TextInput,
@@ -10,30 +9,25 @@ import {
   required,
   SelectInput,
   SimpleFormIterator,
-  TextField,
   useUpdate,
-  FormDataConsumer,
-  Login,
 } from 'react-admin';
-import { useHistory } from 'react-router-dom';
 import { VISIT_TYPES, USER_TYPE } from '../../constants/enums';
 import { filterToQueryBuilder } from '../../utils/helpers';
 
 export const Edit = (props) => {
   const redirect = (basePath) => `${basePath}`;
   const [update] = useUpdate();
-  const history = useHistory();
 
   const updateHandler = async (data) => {
     const editedData = {};
     Object.keys(data).map((el) => {
       if (el === 'equipmentsList') {
-        editedData.equipmentsList = data[el].map((el) =>
-          el.equipmentsList ? el.equipmentsList : el
-        );
+        editedData.equipmentsList = data[el].map((key) => (
+          key.equipmentsList ? key.equipmentsList : key
+        ));
       }
       editedData[el] = data[el];
-      return;
+      return null;
     });
     update('visits', editedData.id, editedData);
   };
@@ -58,32 +52,28 @@ export const Edit = (props) => {
           <AutocompleteInput
             fullWidth
             allowEmpty={false}
-            optionText={(entity) =>
-              entity && entity.id ? `${entity.name}` : ''
-            }
+            optionText={(entity) => (entity && entity.id ? `${entity.name}` : '')}
           />
         </ReferenceInput>
         <ReferenceInput
           alwaysOn
           label="Інженер"
-          // defaultValue={null}
           source="user.id"
           reference="users"
-          // filter={{ role: USER_TYPE.INGENEER }}
+          filter={{ role: USER_TYPE.INGENEER }}
           filterToQuery={filterToQueryBuilder('id', 'firstName', 'lastName')}
         >
           <AutocompleteInput
             fullWidth
-            optionText={(entity) => (
-              entity && entity.id ? `${entity.firstName} ${entity.lastName}` : ''
-            )}
+            optionText={(entity) => (entity && entity.id
+              ? `${entity.firstName} ${entity.lastName}`
+              : '')}
           />
         </ReferenceInput>
         <TextInput
           multiline
           source="engineerComment"
           label="Коментар інженера"
-          validate={required()}
         />
         <TextInput
           multiline

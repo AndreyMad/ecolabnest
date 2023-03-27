@@ -2,7 +2,8 @@ import React from 'react';
 import {
   List as RaList,
   TextField,
-  EditButton, FunctionField,
+  EditButton,
+  FunctionField,
 } from 'react-admin';
 import CustomizableDatagrid from 'ra-customizable-datagrid';
 import dayjs from 'dayjs';
@@ -10,7 +11,13 @@ import { Filter } from './Filter';
 import { CUSTOM_STORAGE } from '../../../constants/list-column-custom-storage';
 import { ShowIdButton } from '../../../components/ShowIdButton';
 
-const DEFAULT_COLUMNS = ['id', 'name', 'visitType', 'createdAt', 'restaurant.name'];
+const DEFAULT_COLUMNS = [
+  'id',
+  'name',
+  'visitType',
+  'createdAt',
+  'restaurant.name',
+];
 
 export const List = (props) => {
   console.log(props);
@@ -26,14 +33,21 @@ export const List = (props) => {
         <FunctionField
           source="createdAt"
           label="Створено"
-          render={(record) => <span>{dayjs(record.createdAt).format('DD-MM-YYYY HH:MM')}</span>}
+          render={(record) => (
+            <span>{dayjs(record.createdAt).format('DD-MM-YYYY HH:MM')}</span>
+          )}
         />
         <FunctionField
+          sortable={false}
           source="user"
           label="Інженер"
-          render={(record) => {
-            console.log(record);
-          }}
+          render={({ user }) => (
+            <span>
+              {user && user.firstName && user.lastName
+                ? `${user.firstName} ${user.lastName}`
+                : ''}
+            </span>
+          )}
         />
         <TextField source="visitType" label="Тип візиту" />
         <TextField source="restaurant.name" label="Ресторан" />

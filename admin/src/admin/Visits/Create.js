@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React from 'react';
 import {
   Create as RaCreate,
@@ -30,7 +31,7 @@ export const Create = (props) => {
           alwaysOn
           label="Ресторан"
           defaultValue={null}
-          source="restaurants.id"
+          source="restourant.id"
           reference="restaurants"
           filterToQuery={filterToQueryBuilder('name')}
         >
