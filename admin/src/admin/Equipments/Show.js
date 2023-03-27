@@ -6,9 +6,9 @@ import {
 export const Show = (props) => (
   <RaShow {...props}>
     <SimpleShowLayout>
-      <TextField source="id" />
       <TextField source="name" label="Назва" />
-      <TextField source="region" label="Назва" />
+      <TextField source="article" label="Артикул" />
+      <TextField source="restaurant.name" label="Ресторан" />
       <DeleteButton />
     </SimpleShowLayout>
   </RaShow>

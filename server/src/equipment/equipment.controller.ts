@@ -8,9 +8,16 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
   model: {
     type: Equipment,
   },
+  query: {
+    join: {
+      restourant: {
+        eager: true,
+      },
+    },
+  },
 })
-// @UseGuards(JwtAuthGuard)
-@Controller('Equipment')
+@UseGuards(JwtAuthGuard)
+@Controller('equipments')
 export class EquipmentController implements CrudController<Equipment> {
   constructor(public service: EquipmentService) {}
 }

@@ -3,7 +3,6 @@ import {
   Edit as RaEdit,
   TextInput,
   SimpleForm,
-  required,
 } from 'react-admin';
 
 export const Edit = (props) => {
@@ -12,7 +11,8 @@ export const Edit = (props) => {
   return (
     <RaEdit {...props}>
       <SimpleForm redirect={redirect}>
-        <TextInput source="name" label="Назва" validate={required()} />
+        <TextInput source="name" label="Назва" />
+        <TextInput source="region" label="Область" />
       </SimpleForm>
     </RaEdit>
   );

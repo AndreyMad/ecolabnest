@@ -1,24 +1,30 @@
 import * as bcrypt from 'bcrypt';
-import { IsEmail, IsEnum, IsNotEmpty, IsString } from 'class-validator';
+import { IsEmail, IsEnum, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import {
   BaseEntity,
   BeforeInsert,
   BeforeUpdate,
   Column,
   Entity,
+  JoinTable,
+  ManyToOne,
+  OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Exclude } from 'class-transformer';
+import { BaseDto } from '../global-definitions/dto/base.dto';
+import { Visit } from 'src/visits/visit.entity';
 
 export const RAND_SALT = 12;
 
 export enum USER_ROLE {
   ADMIN = 'ADMIN',
-  USER = 'USER',
+  INGENEER = 'INGENEER',
+  RESTAURANT = 'RESTAURANT',
 }
 
 @Entity()
-export class User extends BaseEntity {
+export class User extends BaseDto {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -66,4 +72,8 @@ export class User extends BaseEntity {
   public async compareHash(passwordToCompare: string): Promise<boolean> {
     return bcrypt.compare(passwordToCompare, this.password);
   }
+
+  @OneToMany(()=>Visit,(visit)=>visit.user)
+  @JoinTable()
+  visits?: Visit[];
 }

@@ -16,6 +16,7 @@ export const List = (props) => (
     >
       <TextField source="id" />
       <TextField source="name" label="Назва" />
+      <TextField source="region" label="Область" />
       <EditButton />
     </CustomizableDatagrid>
   </RaList>

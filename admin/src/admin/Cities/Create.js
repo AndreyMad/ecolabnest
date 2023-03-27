@@ -13,6 +13,7 @@ export const Create = (props) => {
     <RaCreate {...props}>
       <SimpleForm redirect={redirect}>
         <TextInput source="name" label="Назва" validate={required()} />
+        <TextInput source="region" label="Область" validate={required()} />
       </SimpleForm>
     </RaCreate>
   );

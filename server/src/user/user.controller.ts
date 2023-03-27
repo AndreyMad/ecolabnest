@@ -25,6 +25,11 @@ import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
   },
   query: {
     exclude: ['password'],
+    join: {
+      visits: {
+        eager: true,
+      }
+    },
   },
 })
 
