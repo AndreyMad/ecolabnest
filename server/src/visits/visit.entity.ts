@@ -31,8 +31,7 @@ export class Visit extends BaseDto {
   @IsNotEmpty()
   name: string;
 
-  @OneToMany(() => User, (user) => user.visits)
-  @JoinTable()
+  @ManyToOne(() => User, (user) => user.visits)
   user?: User;
 
   @Column()

@@ -8,6 +8,7 @@ import {
   Entity,
   JoinTable,
   ManyToOne,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -72,6 +73,7 @@ export class User extends BaseDto {
     return bcrypt.compare(passwordToCompare, this.password);
   }
 
-  @ManyToOne(()=>Visit,(visit)=>visit.user)
+  @OneToMany(()=>Visit,(visit)=>visit.user)
+  @JoinTable()
   visits?: Visit[];
 }
