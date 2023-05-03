@@ -12,13 +12,6 @@ import {
 } from 'typeorm';
 import { BaseDto } from '../global-definitions/dto/base.dto';
 
-export enum EQUIPMENT_TYPES {
-  SOLID_SENSE = 'SOLID_SENSE',
-  LIQUID_SENSE = 'LIQUID_SENSE',
-  MATCH_UP = 'MATCH_UP',
-  OTHER = 'OTHER',
-};
-
 @Entity()
 export class Equipment extends BaseDto {
   @PrimaryGeneratedColumn()
@@ -41,9 +34,4 @@ export class Equipment extends BaseDto {
 
   @ManyToMany(() => Visit, (visit) => visit.equipmentsList)
   visits?: Visit[];
-
-  @Column()
-  @IsEnum(EQUIPMENT_TYPES)
-  @IsNotEmpty()
-  equipmentType: string;
 }
