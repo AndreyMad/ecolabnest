@@ -6,8 +6,10 @@ import {
   SimpleForm,
   AutocompleteInput,
   ReferenceInput,
+  SelectInput,
 } from 'react-admin';
 import { filterToQueryBuilder } from '../../utils/helpers';
+import { EQUIPMENT_TYPES } from '../../constants/enums';
 
 export const Create = (props) => {
   const redirect = (basePath) => `${basePath}`;
@@ -17,6 +19,7 @@ export const Create = (props) => {
       <SimpleForm redirect={redirect}>
         <TextInput source="name" label="Назва" validate={required()} />
         <TextInput source="article" label="Артикул" />
+        <SelectInput source="equipmentType" label="Тип обладнання" choices={EQUIPMENT_TYPES} validate={required()} />
         <ReferenceInput
           alwaysOn
           label="Ресторан"

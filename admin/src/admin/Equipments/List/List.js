@@ -23,6 +23,7 @@ export const List = (props) => {
       >
         <ShowIdButton source="id" />
         <TextField source="name" label="Назва" />
+        <TextField source="equipmentType" label="Тип обладнання" />
         <TextField source="article" label="Артикул" />
         <TextField source="restaurant.name" label="Ресторан" />
         <EditButton />
