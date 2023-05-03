@@ -6,6 +6,8 @@ const ImageServerField = ({ record = {}, source, ...props }) => {
   if (record[source] && !record[source].includes('http')) {
     record[source] = `${serverConfig.apiUrl}${record[source]}`;
   }
+  console.log('record', record);
+  console.log('source', source);
   return (
     <ImageField
       {...props}
