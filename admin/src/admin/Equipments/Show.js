@@ -8,6 +8,7 @@ export const Show = (props) => (
     <SimpleShowLayout>
       <TextField source="name" label="Назва" />
       <TextField source="article" label="Артикул" />
+      <TextField source="equipmentType" label="Тип обладнання" />
       <TextField source="restaurant.name" label="Ресторан" />
       <DeleteButton />
     </SimpleShowLayout>
