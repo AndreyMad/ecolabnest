@@ -7,9 +7,12 @@ import {
   ReferenceInput,
   SelectInput,
   required,
+  ImageInput,
+  ImageField,
 } from 'react-admin';
 import { filterToQueryBuilder } from '../../utils/helpers';
 import { EQUIPMENT_TYPES } from '../../constants/enums';
+import ImageServerField from '../../components/ServerImageField';
 
 export const Edit = (props) => {
   const redirect = (basePath) => `${basePath}`;
@@ -34,6 +37,15 @@ export const Edit = (props) => {
             optionText={(entity) => (entity && entity.id ? `${entity.name}` : '')}
           />
         </ReferenceInput>
+        <ImageServerField label="Image" source="imgUrl" title="Image" />
+        <ImageInput
+          source="imgFile"
+          label="Image"
+          accept="image/*"
+          placeholder="Завантажити зображення"
+        >
+          <ImageField source="imgUrl" />
+        </ImageInput>
       </SimpleForm>
     </RaEdit>
   );

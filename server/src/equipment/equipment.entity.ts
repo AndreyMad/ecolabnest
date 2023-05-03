@@ -46,4 +46,10 @@ export class Equipment extends BaseDto {
   @IsEnum(EQUIPMENT_TYPES)
   @IsNotEmpty()
   equipmentType: string;
+
+  @Column({ nullable: true })
+  @IsString()
+  imgUrl: string;
+
+  imgFile: { file: string; name: string };
 }
