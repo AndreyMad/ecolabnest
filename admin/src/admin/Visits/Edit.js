@@ -10,6 +10,7 @@ import {
   SelectInput,
   SimpleFormIterator,
   useUpdate,
+  useGetIdentity,
 } from 'react-admin';
 import { VISIT_TYPES, USER_TYPE } from '../../constants/enums';
 import { filterToQueryBuilder } from '../../utils/helpers';
@@ -17,6 +18,8 @@ import { filterToQueryBuilder } from '../../utils/helpers';
 export const Edit = (props) => {
   const redirect = (basePath) => `${basePath}`;
   const [update] = useUpdate();
+  const identity = useGetIdentity();
+  console.log('identity', identity);
 
   const updateHandler = async (data) => {
     const editedData = {};

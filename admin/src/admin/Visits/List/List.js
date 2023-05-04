@@ -19,40 +19,37 @@ const DEFAULT_COLUMNS = [
   'restaurant.name',
 ];
 
-export const List = (props) => {
-  console.log(props);
-  return (
-    <RaList filters={<Filter />} bulkActionButtons={false} {...props}>
-      <CustomizableDatagrid
-        rowClick="show"
-        storage={CUSTOM_STORAGE}
-        defaultColumns={DEFAULT_COLUMNS}
-      >
-        <ShowIdButton source="id" />
-        <TextField source="name" label="Назва" />
-        <FunctionField
-          source="createdAt"
-          label="Створено"
-          render={(record) => (
-            <span>{dayjs(record.createdAt).format('DD-MM-YYYY HH:MM')}</span>
-          )}
-        />
-        <FunctionField
-          sortable={false}
-          source="user"
-          label="Інженер"
-          render={({ user }) => (
-            <span>
-              {user && user.firstName && user.lastName
-                ? `${user.firstName} ${user.lastName}`
-                : ''}
-            </span>
-          )}
-        />
-        <TextField source="visitType" label="Тип візиту" />
-        <TextField source="restaurant.name" label="Ресторан" />
-        <EditButton />
-      </CustomizableDatagrid>
-    </RaList>
-  );
-};
+export const List = (props) => (
+  <RaList filters={<Filter />} bulkActionButtons={false} {...props}>
+    <CustomizableDatagrid
+      rowClick="show"
+      storage={CUSTOM_STORAGE}
+      defaultColumns={DEFAULT_COLUMNS}
+    >
+      <ShowIdButton source="id" />
+      <TextField source="name" label="Назва" />
+      <FunctionField
+        source="createdAt"
+        label="Створено"
+        render={(record) => (
+          <span>{dayjs(record.createdAt).format('DD-MM-YYYY HH:MM')}</span>
+        )}
+      />
+      <FunctionField
+        sortable={false}
+        source="user"
+        label="Інженер"
+        render={({ user }) => (
+          <span>
+            {user && user.firstName && user.lastName
+              ? `${user.firstName} ${user.lastName}`
+              : ''}
+          </span>
+        )}
+      />
+      <TextField source="visitType" label="Тип візиту" />
+      <TextField source="restaurant.name" label="Ресторан" />
+      <EditButton />
+    </CustomizableDatagrid>
+  </RaList>
+);

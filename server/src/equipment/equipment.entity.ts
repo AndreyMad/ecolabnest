@@ -48,7 +48,7 @@ export class Equipment extends BaseDto {
   equipmentType: string;
 
   @Column({ nullable: true })
-  @IsString()
+  @IsOptional()
   imgUrl: string;
 
   imgFile: { file: string; name: string };
